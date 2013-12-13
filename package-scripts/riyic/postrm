@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary riyic removal steps
+# after package is uninstalled.
+#
+
+echo "riyic has been uninstalled!"
+
+exit 0
