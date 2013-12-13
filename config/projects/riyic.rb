@@ -16,8 +16,11 @@ dependency "preparation"
 # version manifest file
 dependency "version-manifest"
 
+# seteamos versiond e chef
+ENV["CHEF_GIT_REV"] = "11.8.2"
 dependency "chef"
 dependency "ohai" if ENV["OHAI_GIT_REV"]
+
 dependency "berkshelf"
 dependency "test-kitchen"
 dependency "foodcritic"
