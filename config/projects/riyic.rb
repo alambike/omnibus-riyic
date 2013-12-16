@@ -21,10 +21,12 @@ ENV["CHEF_GIT_REV"] = "11.8.2"
 dependency "chef"
 dependency "ohai" if ENV["OHAI_GIT_REV"]
 
-dependency "berkshelf"
-dependency "test-kitchen"
-dependency "foodcritic"
 dependency "lambom"
+dependency "berkshelf"
+
+#dependency "test-kitchen"
+#dependency "foodcritic"
+
 
 exclude "\.git*"
 exclude "bundler\/git"
