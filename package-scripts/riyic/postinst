@@ -79,6 +79,7 @@ rm -f $PREFIX/bin/chef-shell
 rm -f $PREFIX/bin/knife
 rm -f $PREFIX/bin/shef
 rm -f $PREFIX/bin/ohai
+rm -f $PREFIX/bin/lambom
 
 ln -sf $INSTALLER_DIR/bin/chef-solo $PREFIX/bin || error_exit "Cannot link chef-solo to $PREFIX/bin"
 if [ -f "$INSTALLER_DIR/bin/chef-apply" ]; then
@@ -96,6 +97,8 @@ ln -sf $INSTALLER_DIR/bin/ohai $PREFIX/bin || error_exit "Cannot link ohai to $P
 # We test for the presence of /usr/bin/chef-client to know if this script succeeds, so this
 # must appear as the last real action in the script
 ln -sf $INSTALLER_DIR/bin/chef-client $PREFIX/bin || error_exit "Cannot link chef-client to $PREFIX/bin"
+
+ln -sf $INSTALLER_DIR/bin/lambom $PREFIX/bin || error_exit "Cannot link lambom to $PREFIX/bin"
 
 echo "Thank you for installing Chef!"
 

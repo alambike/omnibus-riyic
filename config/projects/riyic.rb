@@ -24,6 +24,7 @@ dependency "ohai" if ENV["OHAI_GIT_REV"]
 dependency "berkshelf"
 dependency "test-kitchen"
 dependency "foodcritic"
+dependency "lambom"
 
 exclude "\.git*"
 exclude "bundler\/git"
