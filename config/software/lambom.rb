@@ -16,9 +16,10 @@
 #
 
 name "lambom"
-version "0.1.2"
-dependencies ["ruby", "rubygems", "bundler"]
+#version "0.1.2"
+dependencies ["ruby", "rubygems","curl"]
 
 build do
-  gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri -v #{version}"
+  #gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri -v #{version}"
+  gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri"
 end

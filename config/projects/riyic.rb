@@ -22,7 +22,7 @@ dependency "chef"
 dependency "ohai" if ENV["OHAI_GIT_REV"]
 
 dependency "lambom"
-dependency "berkshelf"
+#dependency "berkshelf"
 
 #dependency "test-kitchen"
 #dependency "foodcritic"
