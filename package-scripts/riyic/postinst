@@ -100,6 +100,11 @@ ln -sf $INSTALLER_DIR/bin/chef-client $PREFIX/bin || error_exit "Cannot link che
 
 ln -sf $INSTALLER_DIR/bin/lambom $PREFIX/bin || error_exit "Cannot link lambom to $PREFIX/bin"
 
-echo "Thank you for installing Chef!"
+# si non esta instalado curl en el sistema, usamos o noso
+if [ ! -f "$PREFIX/bin/curl" ]; then
+  ln -sf $INSTALLER_DIR/bin/curl $PREFIX/bin || error_exit "Cannot link curl to $PREFIX/bin"
+fi
+
+echo "Installation complete"
 
 exit 0

@@ -4,7 +4,7 @@ homepage "riyic.com"
 
 replaces        "riyic"
 install_path    "/opt/riyic"
-build_version   Omnibus::BuildVersion.new.semver
+build_version   Omnibus::BuildVersion.new.version_tag
 build_iteration 1
 
 # creates required build directories
