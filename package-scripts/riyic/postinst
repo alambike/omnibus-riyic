@@ -12,8 +12,8 @@
 
 PROGNAME=`basename $0`
 INSTALLER_DIR=/opt/riyic
-CONFIG_DIR=/etc/chef
-USAGE="usage: $0 [-v validation_key] ([-o organization] || [-u url])"
+CONFIG_DIR=/etc/riyic
+USAGE="usage: $0"
 
 error_exit()
 {
@@ -32,44 +32,26 @@ else
     PREFIX="/usr"
 fi
 
-validation_key=
-organization=
-chef_url=
 
-while getopts o:u:v: opt
-do
-    case "$opt" in
-      v)  validation_key="${OPTARG}";;
-      o)  organization="${OPTARG}"; chef_url="https://api.opscode.com/organizations/${OPTARG}";;
-      u)  chef_url="${OPTARG}";;
-      \?)    # unknown flag
-          echo >&2 ${USAGE}
-    exit 1;;
-    esac
-done
-shift `expr ${OPTIND} - 1`
-
-if [ "" != "$chef_url" ]; then
+if [ ! -f "$CONFIG_DIR/lambom.conf" ]; then
   mkdir -p ${CONFIG_DIR} || error_exit "Cannot create ${CONFIG_DIR}!"
   (
   cat <<'EOP'
-log_level :info
-log_location STDOUT
-EOP
-  ) > ${CONFIG_DIR}/client.rb
-  if [ "" != "$chef_url" ]; then
-    echo "chef_server_url '${chef_url}'" >> ${CONFIG_DIR}/client.rb
-  fi
-  if [ "" != "$organization" ]; then
-    echo "validation_client_name '${organization}-validator'" >> ${CONFIG_DIR}/client.rb
-  fi
-  chmod 644 ${CONFIG_DIR}/client.rb
-fi
+# lambom Riyic client config file
+# It's in YAML format!
 
-if [ "" != "$validation_key" ]; then
-  cp ${validation_key} ${CONFIG_DIR}/validation.pem || error_exit "Cannot copy the validation key!"
-  chmod 600 ${CONFIG_DIR}/validation.pem
-fi
+# server uuid
+# server: 1ca71cd6-08c4-4855-9381-2f41aeffe59c
+
+# path to private key file
+# private_key_file: /etc/riyic/private.pem
+
+# chef loglevel
+# loglevel: debug
+EOP
+  ) > ${CONFIG_DIR}/lambom.conf
+  chmod 644 ${CONFIG_DIR}/lambom.conf
+fi  
 
 # rm -f before ln -sf is required for solaris 9
 rm -f $PREFIX/bin/chef-client
@@ -102,7 +84,7 @@ ln -sf $INSTALLER_DIR/bin/lambom $PREFIX/bin || error_exit "Cannot link lambom t
 
 # si non esta instalado curl en el sistema, usamos o noso
 if [ ! -f "$PREFIX/bin/curl" ]; then
-  ln -sf $INSTALLER_DIR/bin/curl $PREFIX/bin || error_exit "Cannot link curl to $PREFIX/bin"
+  ln -sf $INSTALLER_DIR/embedded/bin/curl $PREFIX/bin || error_exit "Cannot link curl to $PREFIX/bin"
 fi
 
 echo "Installation complete"
