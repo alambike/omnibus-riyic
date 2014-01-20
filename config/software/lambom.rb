@@ -19,7 +19,16 @@ name "lambom"
 #version "0.1.2"
 dependencies ["ruby", "rubygems","curl"]
 
+version ENV["LAMBOM_REV"] || "master"
+source :git => "git://github.com/RIYIC/lambom"
+always_build true
+
 build do
   #gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri -v #{version}"
-  gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri"
+  #gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri"
+
+  gem ["install pkg/lambom*.gem",
+       "-n #{install_dir}/bin",
+       "--no-rdoc --no-ri"].join(" "), :env => env.merge({"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"})
+
 end

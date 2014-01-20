@@ -62,6 +62,7 @@ rm -f $PREFIX/bin/knife
 rm -f $PREFIX/bin/shef
 rm -f $PREFIX/bin/ohai
 rm -f $PREFIX/bin/lambom
+rm -f $PREFIX/bin/berks
 
 ln -sf $INSTALLER_DIR/bin/chef-solo $PREFIX/bin || error_exit "Cannot link chef-solo to $PREFIX/bin"
 if [ -f "$INSTALLER_DIR/bin/chef-apply" ]; then
@@ -81,6 +82,7 @@ ln -sf $INSTALLER_DIR/bin/ohai $PREFIX/bin || error_exit "Cannot link ohai to $P
 ln -sf $INSTALLER_DIR/bin/chef-client $PREFIX/bin || error_exit "Cannot link chef-client to $PREFIX/bin"
 
 ln -sf $INSTALLER_DIR/bin/lambom $PREFIX/bin || error_exit "Cannot link lambom to $PREFIX/bin"
+ln -sf $INSTALLER_DIR/bin/berks $PREFIX/bin || error_exit "Cannot link berks to $PREFIX/bin"
 
 # si non esta instalado curl en el sistema, usamos o noso
 if [ ! -f "$PREFIX/bin/curl" ]; then

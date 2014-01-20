@@ -20,13 +20,13 @@ dependency "version-manifest"
 ENV["CHEF_GIT_REV"] = "11.8.2"
 dependency "chef"
 dependency "ohai" if ENV["OHAI_GIT_REV"]
-
-dependency "lambom"
-#dependency "berkshelf"
+dependency "berkshelf"
 
 #dependency "test-kitchen"
 #dependency "foodcritic"
 
+# o final de todo, xa que ten dependencias da anteriores gemas
+dependency "lambom"
 
 exclude "\.git*"
 exclude "bundler\/git"
