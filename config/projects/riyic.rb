@@ -4,6 +4,7 @@ homepage "riyic.com"
 
 replaces        "riyic"
 install_path    "/opt/riyic"
+
 build_version   Omnibus::BuildVersion.new.version_tag
 build_iteration 1
 
@@ -25,7 +26,7 @@ dependency "berkshelf"
 #dependency "test-kitchen"
 #dependency "foodcritic"
 
-# o final de todo, xa que ten dependencias da anteriores gemas
+#lambom ao final de todo, xa que ten dependencias da anteriores gemas
 dependency "lambom"
 
 exclude "\.git*"

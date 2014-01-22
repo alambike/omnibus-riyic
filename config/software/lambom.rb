@@ -27,8 +27,9 @@ build do
   #gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri -v #{version}"
   #gem "install #{name} -n #{install_dir}/bin --no-rdoc --no-ri"
 
-  gem ["install pkg/lambom*.gem",
+  gem "build lambom.gemspec"
+  gem ["install lambom*.gem",
        "-n #{install_dir}/bin",
-       "--no-rdoc --no-ri"].join(" "), :env => env.merge({"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"})
+       "--no-rdoc --no-ri"].join(" "), :env => {"PATH" => "#{install_dir}/embedded/bin:#{ENV['PATH']}"}
 
 end
