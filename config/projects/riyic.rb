@@ -18,7 +18,7 @@ dependency "preparation"
 dependency "version-manifest"
 
 # seteamos versiond e chef
-ENV["CHEF_GIT_REV"] = "11.8.2"
+ENV["CHEF_GIT_REV"] = "11-stable"
 dependency "chef"
 dependency "ohai" if ENV["OHAI_GIT_REV"]
 dependency "berkshelf"
