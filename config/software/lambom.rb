@@ -6,7 +6,8 @@ dependency "ruby"
 dependency "rubygems"
 dependency "curl"
 
-always_build true
+# v4.0 non necesita always build
+#always_build true
 
 #version ENV["LAMBOM_REV"] || "master" do
 version "get_rid_of_berkshelf" do
