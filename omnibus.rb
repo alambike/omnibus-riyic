@@ -46,3 +46,6 @@
 # ------------------------------
 # software_gems ['omnibus-software', 'my-company-software']
 # local_software_dirs ['/path/to/local/software']
+
+base_dir './local'
+use_git_caching false
