@@ -25,6 +25,12 @@ override :chef, version: "11.16.4"
 # creates required build directories
 dependency 'preparation'
 
+# O ORDEN IMPORTA! SE NON INSTALAMOS ANTES DE MYSQL A GEMA DE POSTGRESQL PETA
+# instalamos a gema de postgresql
+override :postgresql, 	version: "9.3.4"
+dependency "postgresql"
+dependency "pg-gem"
+
 # riyic dependencies/components
 dependency "chef"
 
@@ -35,10 +41,6 @@ dependency "lambom"
 dependency "mysql-client"
 dependency "mysql-gem"
 
-# instalamos a gema de postgresql
-override :postgresql, 	version: "9.3.4"
-dependency "postgresql"
-dependency "pg-gem"
 
 
 # version manifest file
